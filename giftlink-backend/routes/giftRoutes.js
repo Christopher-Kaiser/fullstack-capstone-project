@@ -25,7 +25,7 @@ router.get('/:id', async (req, res) => {
         const db = await connectToDatabase();
 
         // Task 2: use the collection() method to retrieve the gift collection
-        const collection = db.collection()
+        const collection = db.collection("gifts")
 
         const id = req.params.id;
 
