@@ -30,7 +30,7 @@ body::before {
     position: relative;
     z-index: 2;
     text-align: center;
-    color: #1A1A1A;
+    color: #F5F5F5;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
@@ -42,14 +42,14 @@ body::before {
 /* Task 4: Add styles for headings, paragraphs, and buttons */
 h1, h2 {
     font-size: 4rem;
-    color: #333;
+    color: #CCC;
     margin-bottom: 0.5em;
     font-weight: 700;
 }
 
 .lead {
     font-size: 1.5rem;
-    color: #333;
+    color: #CCC;
     margin-bottom: 2rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
