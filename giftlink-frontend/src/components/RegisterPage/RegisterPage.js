@@ -12,7 +12,7 @@ function RegisterPage() {
 
     // insert code here to create handleRegister function and include console.log
     const handleRegister = async () => {
-        console.log("Register invoked")
+        console.log("Register invoked");
     }
 
     return (
