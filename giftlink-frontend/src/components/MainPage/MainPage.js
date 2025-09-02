@@ -37,7 +37,7 @@ function MainPage() {
         // Write your code below this line
         const date = new Date(timestamp * 1000);
         return date.toLocaleDateString('default', { month: 'long', day: 'numeric', year: 'numeric' });
-      };
+    };
 
     const getConditionClass = (condition) => {
         return condition === "New" ? "list-group-item-success" : "list-group-item-warning";
@@ -67,7 +67,7 @@ function MainPage() {
                                 <h5 className="card-title">{gift.name}</h5>
 
                                 <p className={`card-text ${getConditionClass(gift.condition)}`}>
-                                {gift.condition}
+                                    {gift.condition}
                                 </p>
 
                                 {/* // Task 6: Display gift image or placeholder */}
