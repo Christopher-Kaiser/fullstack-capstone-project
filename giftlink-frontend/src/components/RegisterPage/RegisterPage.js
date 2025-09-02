@@ -12,7 +12,12 @@ function RegisterPage() {
 
     // insert code here to create handleRegister function and include console.log
     const handleRegister = async () => {
-        console.log("Register invoked");
+        try {
+        //Step 1: Implement API call
+        //Step 2: Access data, login, set the AuthContext and set user details
+        } catch {
+            
+        }
     }
 
     return (
