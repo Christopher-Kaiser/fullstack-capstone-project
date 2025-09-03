@@ -52,7 +52,7 @@ router.post('/register', async (req, res) => {
         const authtoken = jwt.sign(payload, JWT_SECRET);
 
         logger.info('User registered successfully');
-        res.json({authtoken,email});
+        return res.status(200).json({authtoken,email});
     } catch (e) {
         logger.error(e)
         return res.status(500).send('Internal server error');
@@ -95,6 +95,59 @@ router.post('/login', async (req, res) => {
     } catch (e) {
         logger.error(e);
         return res.status(500).json({ error: 'Internal server error', details: e.message});
+    }
+});
+
+router.put('/update', async (req, res) => {
+    // Validate the input using `validationResult` and return approiate message if there is an error.
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        logger.error('Validation errors in update request', errors.array());
+        return res.status(400).json({ errors: errors.array() });
+    }
+    try {
+        // Check if `email` is present in the header and throw an appropriate error message if not present.
+        const email = req.headers.email;
+
+        if (!email) {
+            logger.error('Email not found in the request headers');
+            return res.status(400).json({ error: "Email not found in the request headers" });
+        }
+        // Connect to MongoDB
+        const db = await connectToDatabase();
+        const collection = db.collection("users");
+
+        // Find user credentials in database
+        const existingUser = await collection.findOne({ email });
+
+        if (!existingUser) {
+            logger.error('User not found');
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        existingUser.firstName = req.body.name;
+        existingUser.updatedAt = new Date();
+
+        // Update user credentials in database
+        const updatedUser = await collection.findOneAndUpdate(
+            { email },
+            { $set: existingUser },
+            { returnDocument: 'after' }
+        );
+        // Create JWT authentication using secret key from .env file
+        const payload = {
+            user: {
+                id: updatedUser._id.toString(),
+            },
+        };
+
+        const authtoken = jwt.sign(payload, JWT_SECRET);
+        logger.info('User updated successfully');
+        return res.status(200).json({authtoken});
+    } catch (e) {
+        logger.error(e);
+        return res.status(500).send('Internal server error');
     }
 });
 
