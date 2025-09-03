@@ -7,18 +7,18 @@ import './RegisterPage.css';
 
 function RegisterPage() {
 
-    // create useState hook variables for firstName, lastName, email, password
+    // Create useState hook variables for firstName, lastName, email, password
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const [showerr, setShowerr] = useState(''); // state for error message
+    const [showerr, setShowerr] = useState(''); // State for error message
 
     const navigate = useNavigate();
     const { setIsLoggedIn } = useAppContext();
 
-    // create handleRegister function and include console.log
+    // Create handleRegister function and include console.log
     const handleRegister = async () => {
         try {
             // Implement API call
@@ -31,7 +31,7 @@ function RegisterPage() {
                     firstName: firstName,
                     lastName: lastName,
                     email: email,
-                    password: password
+                    password: password,
                 })
             })
 
@@ -69,7 +69,7 @@ function RegisterPage() {
                     <div className="register-card p-4 border rounded">
                         <h2 className="text-center mb-4 font-weight-bold">Register</h2>
 
-                        {/* create input elements for all the variables - firstName, lastName, email, password */}
+                        {/* Create input elements for all the variables - firstName, lastName, email, password */}
                         <div className="mb-4">
                             <label htmlFor="firstName" className="form-label"> First Name</label>
                             <input
@@ -117,7 +117,7 @@ function RegisterPage() {
                             />
                         </div>
 
-                        {/* create a button that performs the `handleRegister` function on click */}
+                        {/* Create a button that performs the `handleRegister` function on click */}
                         <button className="btn btn-primary mb-3" onClick={handleRegister}>Register</button>
 
                         <p className="mt-4 text-center">
@@ -127,7 +127,7 @@ function RegisterPage() {
                 </div>
             </div>
         </div>
-    )    
+    );    
 }
 
 export default RegisterPage;
