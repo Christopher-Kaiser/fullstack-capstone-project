@@ -39,9 +39,9 @@
     margin-bottom: 0.5rem;
 }
 
-.alert .alert-info {
-    background-color:#f8d7da;
-    color: #721c24;
+.alert-info {
+    background-color:#f8d7da !important;
+    color: #721c24 !important;
     padding: 0.75rem 1.25rem;
     margin-top: 1rem;
     border: 1px solid transparent;
@@ -74,7 +74,7 @@
 }
 
 .card:hover {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
 }
 
 .card-body {

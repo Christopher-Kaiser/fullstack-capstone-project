@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {urlConfig} from '../../config';
 
+import './SearchPage.css';
+
 function SearchPage() {
 
     //Task 1: Define state variables for the search query, age range, and search results.
